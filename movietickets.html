@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Ticket Booking</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      padding: 30px;
+      background-color: #f0f0f0;
+    }
+    .container {
+      max-width: 400px;
+      margin: auto;
+      background: #fff;
+      padding: 20px;
+      border-radius: 10px;
+    }
+    h2 {
+      text-align: center;
+    }
+    label, select, input {
+      display: block;
+      width: 100%;
+      margin-bottom: 15px;
+    }
+    button {
+      width: 100%;
+      padding: 10px;
+      background: #28a745;
+      color: white;
+      border: none;
+      font-size: 16px;
+      cursor: pointer;
+    }
+    #output {
+      margin-top: 20px;
+      font-weight: bold;
+      text-align: center;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="container">
+    <h2>Movie Ticket Booking</h2>
+    
+    <label for="movie">Select Movie:</label>
+    <select id="movie">
+      <option value="10">Avengers: Endgame - $10</option>
+      <option value="12">Inception - $12</option>
+      <option value="8">Finding Nemo - $8</option>
+      <option value="15">The Dark Knight - $15</option>
+    </select>
+
+    <label for="tickets">Number of Tickets:</label>
+    <input type="number" id="tickets" min="1" value="1" />
+
+    <button onclick="bookTickets()">Book Now</button>
+
+    <div id="output"></div>
+  </div>
+
+  <script>
+    function bookTickets() {
+      const movieSelect = document.getElementById("movie");
+      const ticketCount = parseInt(document.getElementById("tickets").value);
+      const ticketPrice = parseInt(movieSelect.value);
+      const movieName = movieSelect.options[movieSelect.selectedIndex].text.split(" - ")[0];
+
+      const total = ticketPrice * ticketCount;
+
+      document.getElementById("output").innerHTML =
+        You have booked ${ticketCount} ticket(s) for <strong>${movieName}</strong>.<br>Total cost: <strong>$${total}</strong>;
+    }
+  </script>
+
+</body>
+</html>
